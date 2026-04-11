@@ -995,40 +995,33 @@
 
   /* ===== TRIPS ===== */
   const trips = [
-    { name:'ARDE LA SELVA', country:'Antioquia, Colombia', icon:'🌿', lat:6.2183, lng:-75.5601 },
-    { name:'BOGOTÁ',        country:'Colombia',           icon:'🏙️', lat:4.7110, lng:-74.0721 },
-    { name:'JERICÓ',        country:'Antioquia, Colombia',icon:'🏔️', lat:5.7892, lng:-75.7784 },
-    { name:'JARDÍN',        country:'Antioquia, Colombia',icon:'🌸', lat:5.5997, lng:-75.8202 },
-    { name:'MANIZALES',     country:'Caldas, Colombia',   icon:'☕', lat:5.0703, lng:-75.5138 },
-    { name:'MADRID',        country:'España',             icon:'🇪🇸', lat:40.4168, lng:-3.7038 },
-    { name:'PARÍS',         country:'Francia',            icon:'🗼', lat:48.8566, lng:2.3522 },
-    { name:'ÁMSTERDAM',     country:'Países Bajos',       icon:'🌷', lat:52.3676, lng:4.9041 },
-    { name:'PORTO',         country:'Portugal',           icon:'🍷', lat:41.1579, lng:-8.6291 },
+      { name:'ARDE LA SELVA', country:'Antioquia, Colombia', photo:'fotos/arde-la-selva.jpg', icon:'🌿', lat:6.2183,  lng:-75.5601 },
+      { name:'JERICÓ',        country:'Antioquia, Colombia', photo:'fotos/jerico.jpg',         icon:'🏔️', lat:5.7892,  lng:-75.7784 },
+      { name:'JARDÍN',        country:'Antioquia, Colombia', photo:'fotos/jardin.jpg',         icon:'🌸', lat:5.5997,  lng:-75.8202 },
+      { name:'MANIZALES',     country:'Caldas, Colombia',    photo:'fotos/manizales.jpg',      icon:'☕', lat:5.0703,  lng:-75.5138 },
+      { name:'MADRID',        country:'España',              photo:'fotos/madrid.jpg',         icon:'🇪🇸', lat:40.4168, lng:-3.7038  },
+      { name:'PARÍS',         country:'Francia',             photo:'fotos/paris.jpg',          icon:'🗼', lat:48.8566, lng:2.3522   },
+      { name:'ÁMSTERDAM',     country:'Países Bajos',        photo:'fotos/amsterdam.jpg',      icon:'🌷', lat:52.3676, lng:4.9041   },
+      { name:'PORTO',         country:'Portugal',            photo:'fotos/porto.jpg',          icon:'🍷', lat:41.1579, lng:-8.6291  },
   ];
 
-  function buildTrips() {
-    const grid = document.getElementById('trips-grid');
-    trips.forEach((t, i) => {
-      const card = document.createElement('div');
-      card.className = 'trip-card';
-      card.id = `tc-${i}`;
-      card.innerHTML = `
-        <div class="trip-photo-area" id="tpa-${i}">
-          <div class="trip-placeholder" id="tph-${i}">
-            <span class="trip-placeholder-icon">${t.icon}</span>
-            <label class="trip-upload-label" for="tfile-${i}">+ Agregar foto</label>
-          </div>
-        </div>
-        <div class="trip-overlay"></div>
-        <div class="trip-info">
-          <div class="trip-name">${t.name}</div>
-          <div class="trip-country">${t.country}</div>
-        </div>
-        <input type="file" id="tfile-${i}" accept="image/*" onchange="loadTripPhoto(${i},this)">
-      `;
-      grid.appendChild(card);
-    });
-  }
+function buildTrips() {
+  const grid = document.getElementById('trips-grid');
+  trips.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'trip-card';
+    card.innerHTML = `
+      <div class="trip-photo-area">
+        <img src="${t.photo}" alt="${t.name}" onerror="this.style.display='none'">
+      </div>
+      <div class="trip-overlay"></div>
+      <div class="trip-info">
+        <div class="trip-name">${t.name}</div>
+        <div class="trip-country">${t.country}</div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
 
   function loadTripPhoto(idx, input) {
     if(!input.files||!input.files[0]) return;
