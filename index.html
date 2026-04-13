@@ -359,6 +359,7 @@
   .hero-stats {
     display: flex;
     gap: 3rem;
+    flex-wrap: wrap;
   }
 
   .stat-item {
@@ -840,16 +841,16 @@
         <p class="hero-tagline">Dos años de aventuras, conciertos, viajes y amor</p>
         <div class="hero-stats" id="hero-stats">
           <div class="stat-item">
-            <span class="stat-num" id="cnt-y">2</span>
-            <span class="stat-label">Años</span>
+            <span class="stat-num" id="cnt-h">0</span>
+            <span class="stat-label">Horas</span>
           </div>
           <div class="stat-item">
-            <span class="stat-num" id="cnt-m">0</span>
-            <span class="stat-label">Meses</span>
+            <span class="stat-num" id="cnt-min">0</span>
+            <span class="stat-label">Minutos</span>
           </div>
           <div class="stat-item">
-            <span class="stat-num" id="cnt-d">0</span>
-            <span class="stat-label">Días</span>
+            <span class="stat-num" id="cnt-s">0</span>
+            <span class="stat-label">Segundos</span>
           </div>
         </div>
       </div>
@@ -967,18 +968,44 @@
   }
   document.getElementById('pw-input').addEventListener('keydown', e => { if(e.key==='Enter') checkPw(); });
 
-  /* ===== COUNTER ===== */
-  function counter() {
+/* ===== COUNTER ===== */
+function counter() {
     const start = new Date('2024-05-23');
-    const now = new Date();
-    const diff = now - start;
-    const totalDays = Math.floor(diff / 86400000);
-    const y = Math.floor(totalDays / 365);
-    const m = Math.floor((totalDays % 365) / 30);
-    const d = totalDays % 30;
-    document.getElementById('cnt-y').textContent = y;
-    document.getElementById('cnt-m').textContent = m;
-    document.getElementById('cnt-d').textContent = d;
+    
+    function update() {
+      const now = new Date();
+      const diff = now - start;
+      
+      // Total milliseconds
+      const totalMs = diff;
+      const totalSeconds = Math.floor(totalMs / 1000);
+      const totalMinutes = Math.floor(totalSeconds / 60);
+      const totalHours = Math.floor(totalMinutes / 60);
+      const totalDays = Math.floor(totalHours / 24);
+      
+      // Calculate years (approximate)
+      const y = Math.floor(totalDays / 365.25);
+      const daysAfterYears = totalDays - (y * 365);
+      
+      // Calculate months
+      const m = Math.floor(daysAfterYears / 30.44);
+      const daysAfterMonths = Math.floor(daysAfterYears - (m * 30.44));
+      
+      // Calculate remaining hours, minutes, seconds
+      const h = totalHours % 24;
+      const min = totalMinutes % 60;
+      const s = totalSeconds % 60;
+      
+      document.getElementById('cnt-y').textContent = y;
+      document.getElementById('cnt-m').textContent = m;
+      document.getElementById('cnt-d').textContent = daysAfterMonths;
+      document.getElementById('cnt-h').textContent = h;
+      document.getElementById('cnt-min').textContent = min;
+      document.getElementById('cnt-s').textContent = s;
+    }
+    
+    update();
+    setInterval(update, 1000); // Update every second
   }
 
   /* ===== MARQUEE ===== */
