@@ -951,10 +951,18 @@
 <script>
   /* ===== PASSWORD ===== */
   function checkPw() {
-    const v = document.getElementById('pw-input').value;
+ const v = document.getElementById('pw-input').value;
     const err = document.getElementById('pw-err');
     if (v === 'babybird') {
       const scr = document.getElementById('pw-screen');
+      
+      // Intentar forzar el play de Spotify al hacer clic en entrar
+      const spotifyIframe = document.querySelector('#musica iframe');
+      if (spotifyIframe) {
+        // Recargamos el src con el parámetro autoplay
+        const currentSrc = spotifyIframe.src;
+        spotifyIframe.src = currentSrc + "&autoplay=1";
+      }
       scr.style.opacity = '0';
       setTimeout(() => {
         scr.style.display = 'none';
