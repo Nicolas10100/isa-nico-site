@@ -343,36 +343,46 @@
     line-height: 1.5;
   }
 
-  /* NUEVO CONTADOR ESTILO FLOTANTE */
-  .hero-stats-new {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 2.5rem;
-    z-index: 5;
-    display: flex;
-    gap: 1.5rem;
-    background: rgba(12, 11, 10, 0.4);
-    padding: 1rem;
-    backdrop-filter: blur(5px);
-    border: 1px solid var(--border);
+  /* ========== COUNTER BAND ========== */
+  .counter-section {
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 2.5rem;
+    text-align: center;
+  }
+  
+  .counter-title {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 2.5rem;
   }
 
-  .hero-stats-new .stat-item {
+  .stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 3.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stats-container .stat-item {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .hero-stats-new .stat-num {
+  .stats-container .stat-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    color: var(--accent);
+    font-size: 3.5rem;
+    color: var(--text);
     line-height: 1;
+    margin-bottom: 0.5rem;
   }
 
-  .hero-stats-new .stat-label {
-    font-size: 0.55rem;
-    letter-spacing: 0.1em;
+  .stats-container .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--text-muted);
   }
@@ -696,8 +706,8 @@
   @media(max-width:768px) {
     .nav-links { display: none; }
     .tl-item { grid-template-columns: 80px 1fr; gap: 0 1.2rem; }
-    .hero-stats-new { left: 1rem; bottom: 1rem; gap: 0.8rem; padding: 0.5rem; }
-    .hero-stats-new .stat-num { font-size: 1.4rem; }
+    .stats-container { gap: 1.5rem; }
+    .stats-container .stat-num { font-size: 2.5rem; }
   }
   @media(max-width:640px){ .letter-outer { padding: 2rem; } }
   @media(max-width:560px){ .trips-grid { grid-template-columns: 1fr; } }
@@ -756,8 +766,11 @@
         <p class="hero-tagline">Dos años de aventuras, conciertos, viajes y amor</p>
       </div>
     </div>
+  </section>
 
-    <div class="hero-stats-new">
+  <div class="counter-section">
+    <h3 class="counter-title">Llevamos juntos...</h3>
+    <div class="stats-container">
       <div class="stat-item">
         <span class="stat-num" id="cnt-y">2</span>
         <span class="stat-label">Años</span>
@@ -783,7 +796,7 @@
         <span class="stat-label">Seg</span>
       </div>
     </div>
-  </section>
+  </div>
 
   <div class="section-wrap" id="timeline">
     <div class="inner">
@@ -864,7 +877,6 @@
     if (v === 'babybird') {
       const scr = document.getElementById('pw-screen');
       
-      // Intentar forzar el autoplay de Spotify
       const spotifyIframe = document.querySelector('.spotify-wrap iframe');
       if (spotifyIframe) {
         const currentSrc = spotifyIframe.src;
