@@ -986,7 +986,7 @@
     const words = [
       'ISA & NICO','MADRID','PARÍS','ÁMSTERDAM','PORTO',
       'JARDÍN','JERICÓ','MANIZALES','ARDE LA SELVA','BOGOTÁ',
-      'ALWAYS GRATEFUL','2 AÑOS','MORAT','FEID','EUROTRIP','🧡'
+      'TE AMO','2 AÑOS','MORAT','FEID','EUROTRIP','FELIZ ANIVERSARIO 🧡'
     ];
     const inner = document.getElementById('marquee-inner');
     const set = () => {
@@ -1098,10 +1098,10 @@ function buildTrips() {
   function buildMap() {
     const map = L.map('map', { center:[25,5], zoom:2, zoomControl:true });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution:'© OpenStreetMap',
-      maxZoom:18
-    }).addTo(map);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '© OpenStreetMap, © CartoDB',
+        maxZoom: 18
+      }).addTo(map);
 
     const mkIcon = L.divIcon({
       className:'',
