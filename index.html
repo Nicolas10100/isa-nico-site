@@ -29,7 +29,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.28);
+  filter: brightness(0.5);
 }
 
 .hero-carousel-dots {
@@ -213,7 +213,7 @@
     justify-content: space-between;
     border-bottom: 1px solid var(--border);
     backdrop-filter: blur(20px);
-    background: rgba(12,11,10,0.85);
+    background: rgba(255,245,247,0.95);
   }
 
   .nav-brand {
@@ -238,7 +238,7 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover { color: var(--accent); }
 
   /* ========== MARQUEE ========== */
   .marquee-strip {
@@ -257,12 +257,12 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 0.95rem;
     letter-spacing: 0.25em;
-    color: var(--bg);
+    color: white;
     padding: 0 2rem;
   }
 
   .marquee-inner span.sep {
-    color: rgba(12,11,10,0.4);
+    color: rgba(255,255,255,0.4);
     padding: 0 0.5rem;
     letter-spacing: 0;
   }
@@ -291,7 +291,7 @@
     transform: translate(-50%, -50%);
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(12rem, 35vw, 28rem);
-    color: rgba(237,232,224,0.025);
+    color: rgba(45,27,61,0.05);
     letter-spacing: -0.02em;
     white-space: nowrap;
     pointer-events: none;
@@ -358,7 +358,7 @@
 
   .hero-stats {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     flex-wrap: wrap;
   }
 
@@ -472,7 +472,7 @@
     transition: background 0.3s;
   }
 
-  .tl-item.special::before { background: var(--accent); box-shadow: 0 0 10px rgba(201,176,140,0.4); }
+  .tl-item.special::before { background: var(--accent); box-shadow: 0 0 10px rgba(255,20,147,0.4); }
 
   .tl-item:hover::before { background: var(--accent); }
 
@@ -556,7 +556,7 @@
   .trip-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(12,11,10,0.92) 0%, rgba(12,11,10,0.2) 50%, transparent 100%);
+    background: linear-gradient(to top, rgba(255,245,247,0.92) 0%, rgba(255,245,247,0.2) 50%, transparent 100%);
   }
 
   .trip-placeholder {
@@ -591,7 +591,7 @@
     position: relative;
     z-index: 2;
     padding: 1.5rem;
-    border-top: 1px solid rgba(237,232,224,0.08);
+    border-top: 1px solid rgba(45,27,61,0.08);
   }
 
   .trip-name {
@@ -615,7 +615,7 @@
     top: 0.8rem;
     right: 0.8rem;
     padding: 0.35rem 0.7rem;
-    background: rgba(12,11,10,0.7);
+    background: rgba(255,245,247,0.9);
     border: 1px solid var(--border-strong);
     font-size: 0.6rem;
     letter-spacing: 0.1em;
@@ -634,13 +634,13 @@
     border: 1px solid var(--border);
   }
 
-  .leaflet-container { background: #111010 !important; }
-  .leaflet-tile-pane { filter: brightness(0.55) saturate(0.3) contrast(1.1); }
+  .leaflet-container { background: var(--surface) !important; }
+  .leaflet-tile-pane { filter: brightness(1.1) saturate(0.8) contrast(1); }
   .leaflet-popup-content-wrapper {
     background: var(--surface) !important;
     border: 1px solid var(--border-strong) !important;
     border-radius: 0 !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
     color: var(--text) !important;
   }
   .leaflet-popup-tip { background: var(--surface) !important; }
@@ -695,7 +695,7 @@
   #letter-body:focus { outline: none; }
   #letter-body[data-ph]:empty::before {
     content: attr(data-ph);
-    color: rgba(138,132,124,0.4);
+    color: rgba(122,90,122,0.4);
     pointer-events: none;
     font-style: italic;
   }
@@ -841,6 +841,18 @@
         <p class="hero-tagline">Dos años de aventuras, conciertos, viajes y amor</p>
         <div class="hero-stats" id="hero-stats">
           <div class="stat-item">
+            <span class="stat-num" id="cnt-y">2</span>
+            <span class="stat-label">Años</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="cnt-m">0</span>
+            <span class="stat-label">Meses</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="cnt-d">0</span>
+            <span class="stat-label">Días</span>
+          </div>
+          <div class="stat-item">
             <span class="stat-num" id="cnt-h">0</span>
             <span class="stat-label">Horas</span>
           </div>
@@ -890,13 +902,6 @@
       <span class="s-label">Las canciones que nos acompañaron</span>
       <h2 class="s-title">ISA & NICO<br><em>playlist</em></h2>
       <div class="spotify-wrap">
-        <!--
-          NICOLÁS — Para agregar tu playlist:
-          1. Abre Spotify → tu playlist "Isa 🐒❤️"
-          2. Tres puntos → Compartir → Copiar enlace
-          3. El link es: https://open.spotify.com/playlist/XXXXXXXXXXX
-          4. Reemplaza AQUI_VA_EL_ID por la parte después de /playlist/
-        -->
         <iframe 
         style="border-radius:12px" 
         src="https://open.spotify.com/embed/playlist/3bwqjA0daxDejlAsyVLR7o?si=5766d2dc92334f9b&pt=13aae94c367bb192f926942a94dee1d2"
@@ -968,30 +973,26 @@
   }
   document.getElementById('pw-input').addEventListener('keydown', e => { if(e.key==='Enter') checkPw(); });
 
-/* ===== COUNTER ===== */
-function counter() {
+  /* ===== COUNTER ===== */
+  function counter() {
     const start = new Date('2024-05-23');
     
     function update() {
       const now = new Date();
       const diff = now - start;
       
-      // Total milliseconds
       const totalMs = diff;
       const totalSeconds = Math.floor(totalMs / 1000);
       const totalMinutes = Math.floor(totalSeconds / 60);
       const totalHours = Math.floor(totalMinutes / 60);
       const totalDays = Math.floor(totalHours / 24);
       
-      // Calculate years (approximate)
       const y = Math.floor(totalDays / 365.25);
       const daysAfterYears = totalDays - (y * 365);
       
-      // Calculate months
       const m = Math.floor(daysAfterYears / 30.44);
       const daysAfterMonths = Math.floor(daysAfterYears - (m * 30.44));
       
-      // Calculate remaining hours, minutes, seconds
       const h = totalHours % 24;
       const min = totalMinutes % 60;
       const s = totalSeconds % 60;
@@ -1005,7 +1006,7 @@ function counter() {
     }
     
     update();
-    setInterval(update, 1000); // Update every second
+    setInterval(update, 1000);
   }
 
   /* ===== MARQUEE ===== */
@@ -1022,7 +1023,7 @@ function counter() {
       return el;
     };
     inner.appendChild(set());
-    inner.appendChild(set()); // duplicate for seamless loop
+    inner.appendChild(set());
   }
 
   /* ===== TIMELINE DATA ===== */
@@ -1083,81 +1084,57 @@ function counter() {
       { name:'PORTO',         country:'Portugal',            photo:'fotos/porto.jpg',          icon:'🍷', lat:41.1579, lng:-8.6291  },
   ];
 
-function buildTrips() {
-  const grid = document.getElementById('trips-grid');
-  trips.forEach(t => {
-    const card = document.createElement('div');
-    card.className = 'trip-card';
-    card.innerHTML = `
-      <div class="trip-photo-area">
-        <img src="${t.photo}" alt="${t.name}" onerror="this.style.display='none'">
-      </div>
-      <div class="trip-overlay"></div>
-      <div class="trip-info">
-        <div class="trip-name">${t.name}</div>
-        <div class="trip-country">${t.country}</div>
-      </div>`;
-    grid.appendChild(card);
-  });
-}
-
-  function loadTripPhoto(idx, input) {
-    if(!input.files||!input.files[0]) return;
-    const reader = new FileReader();
-    reader.onload = e => {
-      const area = document.getElementById(`tpa-${idx}`);
-      document.getElementById(`tph-${idx}`).remove();
-      const img = document.createElement('img');
-      img.src = e.target.result;
-      area.insertBefore(img, area.firstChild);
-
-      // Change button
-      const lbl = document.createElement('label');
-      lbl.htmlFor = `tfile-${idx}`;
-      lbl.className = 'trip-change-btn';
-      lbl.textContent = '↺ Cambiar';
-      document.getElementById(`tc-${idx}`).appendChild(lbl);
-    };
-    reader.readAsDataURL(input.files[0]);
+  function buildTrips() {
+    const grid = document.getElementById('trips-grid');
+    trips.forEach(t => {
+      const card = document.createElement('div');
+      card.className = 'trip-card';
+      card.innerHTML = `
+        <div class="trip-photo-area">
+          <img src="${t.photo}" alt="${t.name}" onerror="this.style.display='none'">
+        </div>
+        <div class="trip-overlay"></div>
+        <div class="trip-info">
+          <div class="trip-name">${t.name}</div>
+          <div class="trip-country">${t.country}</div>
+        </div>`;
+      grid.appendChild(card);
+    });
   }
 
   /* ===== MAP ===== */
   function buildMap() {
     const map = L.map('map', { center:[25,5], zoom:2, zoomControl:true });
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap, © CartoDB',
-        maxZoom: 18
-      }).addTo(map);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap, © CartoDB',
+      maxZoom: 18
+    }).addTo(map);
 
     const mkIcon = L.divIcon({
       className:'',
-      html:`<div style="width:10px;height:10px;background:#C9B08C;border-radius:50%;box-shadow:0 0 0 3px rgba(201,176,140,0.25);"></div>`,
+      html:`<div style="width:10px;height:10px;background:#FF1493;border-radius:50%;box-shadow:0 0 0 3px rgba(255,20,147,0.25);"></div>`,
       iconSize:[10,10], iconAnchor:[5,5], popupAnchor:[0,-10]
     });
 
     trips.forEach(t => {
       L.marker([t.lat,t.lng],{icon:mkIcon}).addTo(map)
-        .bindPopup(`<div style="font-family:'DM Sans',sans-serif;padding:4px 8px;background:#141210;color:#EDE8E0;min-width:120px">
-          <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#8A847C;margin-bottom:4px">${t.country}</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.08em;color:#EDE8E0">${t.name}</div>
+        .bindPopup(`<div style="font-family:'DM Sans',sans-serif;padding:4px 8px;background:var(--surface);color:var(--text);min-width:120px">
+          <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px">${t.country}</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.08em;color:var(--text)">${t.name}</div>
         </div>`);
     });
 
     const latlngs = trips.map(t=>[t.lat,t.lng]);
-    L.polyline(latlngs,{color:'#C9B08C',weight:1,opacity:0.3,dashArray:'4,8'}).addTo(map);
+    L.polyline(latlngs,{color:'#FF1493',weight:1,opacity:0.3,dashArray:'4,8'}).addTo(map);
   }
 
   /* ===== LETTER ===== */
   let editing = false;
   function toggleEdit() {
     const el = document.getElementById('letter-body');
-    const lbl = document.getElementById('edit-lbl');
-    const icon = document.getElementById('edit-icon');
     editing = !editing;
     el.contentEditable = editing ? 'true' : 'false';
-    lbl.textContent = editing ? 'Guardar' : 'Editar carta';
-    icon.textContent = editing ? '✓' : '✏';
     if(editing) {
       el.focus();
       const r = document.createRange();
@@ -1178,29 +1155,30 @@ function buildTrips() {
     buildMap();
     buildCarousel();
   }
+
   /* ===== HERO CAROUSEL ===== */
-function buildCarousel() {
-  const slides = document.querySelectorAll('.hero-carousel-slide');
-  const dotsEl = document.getElementById('carousel-dots');
-  let current = 0;
+  function buildCarousel() {
+    const slides = document.querySelectorAll('.hero-carousel-slide');
+    const dotsEl = document.getElementById('carousel-dots');
+    let current = 0;
 
-  slides.forEach((_, i) => {
-    const dot = document.createElement('span');
-    if (i === 0) dot.classList.add('active');
-    dot.onclick = () => goTo(i);
-    dotsEl.appendChild(dot);
-  });
+    slides.forEach((_, i) => {
+      const dot = document.createElement('span');
+      if (i === 0) dot.classList.add('active');
+      dot.onclick = () => goTo(i);
+      dotsEl.appendChild(dot);
+    });
 
-  function goTo(n) {
-    slides[current].classList.remove('active');
-    dotsEl.children[current].classList.remove('active');
-    current = n;
-    slides[current].classList.add('active');
-    dotsEl.children[current].classList.add('active');
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dotsEl.children[current].classList.remove('active');
+      current = n;
+      slides[current].classList.add('active');
+      dotsEl.children[current].classList.add('active');
+    }
+
+    setInterval(() => goTo((current + 1) % slides.length), 4000);
   }
-
-  setInterval(() => goTo((current + 1) % slides.length), 4000);
-}
 </script>
 </body>
 </html>
