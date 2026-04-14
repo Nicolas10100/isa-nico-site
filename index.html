@@ -343,6 +343,35 @@
     line-height: 1.5;
   }
 
+  .hero-counter {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .hero-counter .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .hero-counter .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .hero-counter .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
   /* ========== COUNTER BAND ===== IMPROVED ===== */
   .counter-section {
     background: var(--surface2);
@@ -875,39 +904,23 @@
       </div>
       <div class="hero-footer anim-2">
         <p class="hero-tagline">Dos años de aventuras, conciertos, viajes y amor</p>
+        <div class="hero-counter">
+          <div class="stat-item">
+            <span class="stat-num" id="cnt-y">2</span>
+            <span class="stat-label">Años</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="cnt-m">0</span>
+            <span class="stat-label">Meses</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="cnt-d">0</span>
+            <span class="stat-label">Días</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-
-  <div class="counter-section">
-    <h3 class="counter-title">Llevamos juntos...</h3>
-    <div class="stats-container">
-      <div class="stat-item">
-        <span class="stat-num" id="cnt-y">2</span>
-        <span class="stat-label">Años</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num" id="cnt-m">0</span>
-        <span class="stat-label">Meses</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num" id="cnt-d">0</span>
-        <span class="stat-label">Días</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num" id="cnt-h">0</span>
-        <span class="stat-label">Horas</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num" id="cnt-min">0</span>
-        <span class="stat-label">Min</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num" id="cnt-s">0</span>
-        <span class="stat-label">Seg</span>
-      </div>
-    </div>
-  </div>
 
   <div class="section-wrap" id="timeline">
     <div class="inner">
@@ -1034,20 +1047,13 @@
       const m = Math.floor(daysAfterYears / 30.44);
       const daysAfterMonths = Math.floor(daysAfterYears - (m * 30.44));
       
-      const h = totalHours % 24;
-      const min = totalMinutes % 60;
-      const s = totalSeconds % 60;
-      
       document.getElementById('cnt-y').textContent = y;
       document.getElementById('cnt-m').textContent = m;
       document.getElementById('cnt-d').textContent = daysAfterMonths;
-      document.getElementById('cnt-h').textContent = h;
-      document.getElementById('cnt-min').textContent = min;
-      document.getElementById('cnt-s').textContent = s;
     }
     
     update();
-    setInterval(update, 1000);
+    setInterval(update, 60000);
   }
 
   /* ===== MARQUEE ===== */
