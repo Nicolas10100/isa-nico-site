@@ -29,8 +29,16 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     filter: brightness(0.28);
   }
+
+  /* Individual carousel slide positioning */
+  .carousel-1 img { object-position: center top; }
+  .carousel-2 img { object-position: center 30%; }
+  .carousel-3 img { object-position: center top; }
+  .carousel-4 img { object-position: center 40%; }
+  .carousel-5 img { object-position: center top; }
 
   .hero-carousel-dots {
     position: absolute;
@@ -888,11 +896,11 @@
 
   <section id="hero">
     <div class="hero-carousel" id="hero-carousel">
-      <div class="hero-carousel-slide active"><img src="fotos/carousel-1.jpg" alt=""></div>
-      <div class="hero-carousel-slide"><img src="fotos/carousel-2.jpg" alt=""></div>
-      <div class="hero-carousel-slide"><img src="fotos/carousel-3.jpg" alt=""></div>
-      <div class="hero-carousel-slide"><img src="fotos/carousel-4.jpg" alt=""></div>
-      <div class="hero-carousel-slide"><img src="fotos/carousel-5.jpg" alt=""></div>
+      <div class="hero-carousel-slide active carousel-1"><img src="fotos/carousel-1.jpg" alt=""></div>
+      <div class="hero-carousel-slide carousel-2"><img src="fotos/carousel-2.jpg" alt=""></div>
+      <div class="hero-carousel-slide carousel-3"><img src="fotos/carousel-3.jpg" alt=""></div>
+      <div class="hero-carousel-slide carousel-4"><img src="fotos/carousel-4.jpg" alt=""></div>
+      <div class="hero-carousel-slide carousel-5"><img src="fotos/carousel-5.jpg" alt=""></div>
     </div>
     <div class="hero-carousel-dots" id="carousel-dots"></div>
     
