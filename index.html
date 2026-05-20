@@ -1167,10 +1167,10 @@ Te amo mucho. Felices dos años!
     const map = L.map('map', { center:[25,5], zoom:2, zoomControl:true });
 
     // Use CartoDB tile layer (CORS-friendly, no referer issues)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      attribution: '© OpenStreetMap contributors, © CARTO',
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap',
       subdomains: 'abcd',
-      maxZoom: 18
+      maxZoom: 20
     }).addTo(map);
 
     const mkIcon = L.divIcon({
