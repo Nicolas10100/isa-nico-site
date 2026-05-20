@@ -733,12 +733,12 @@
   #map {
     width: 100%;
     height: 500px;
-    background: var(--surface);
+    background: #000;
     border: 1px solid var(--border);
   }
 
   .leaflet-container { background: #111010 !important; }
-  .leaflet-tile-pane { filter: brightness(1.1) contrast(1.3) grayscale(0.2); }
+  .leaflet-tile-pane { filter: brightness(1.2) contrast(1.5) grayscale(0.2) saturate(0); }
   .leaflet-popup-content-wrapper {
     background: var(--surface) !important;
     border: 1px solid var(--border-strong) !important;
@@ -1167,10 +1167,10 @@ Te amo mucho. Felices dos años!
     const map = L.map('map', { center:[25,5], zoom:2, zoomControl:true });
 
     // Use CartoDB tile layer (CORS-friendly, no referer issues)
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
-      attribution: 'Labels &copy; Esri',
-      maxZoom: 16,
-        opacity: 0.5 // Que no brille tanto para no dañar tu estética
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap contributors, © CARTO',
+      subdomains: 'abcd',
+      maxZoom: 20
     }).addTo(map);
 
     const mkIcon = L.divIcon({
